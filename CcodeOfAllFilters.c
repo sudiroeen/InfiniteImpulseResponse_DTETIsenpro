@@ -1,3 +1,8 @@
+/* 
+ Author: sudiro [sudiro@mail.ugm.ac.id]
+ this file can be downloaded from github.com/sudiroeen
+*/
+
 #include <stdio.h>
 #include <math.h>
 
