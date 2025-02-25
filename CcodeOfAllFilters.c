@@ -57,10 +57,10 @@ float system_DBSF(float* vec_yn, float* vec_xn){
 	float w3 = 80 * 2*M_PI; 
 	float w4 = 160 * 2*M_PI; 
 	float Ts = 1e-3;
-	float exp_w1ts = np.exp(-w1*Ts);
-	float exp_w2ts = np.exp(-w2*Ts);
-	float exp_w3ts = np.exp(-w3*Ts);
-	float exp_w4ts = np.exp(-w4*Ts);
+	float exp_w1ts = pow(M_E, -w1*Ts);
+	float exp_w2ts = pow(M_E, -w2*Ts);
+	float exp_w3ts = pow(M_E, -w3*Ts);
+	float exp_w4ts = pow(M_E, -w4*Ts);
 
 	float eta1 = w2 + w3 - w1 - w4;
 	float eta2 = w2*w3 - w1*w4;
