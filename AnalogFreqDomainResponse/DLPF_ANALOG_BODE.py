@@ -1,3 +1,7 @@
+# 
+# Author: sudiro [sudiro@mail.ugm.ac.id]
+# this file can be downloaded from github.com/sudiroeen
+# 
 import numpy as np
 import matplotlib.pyplot as plt 
 
