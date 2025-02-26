@@ -21,14 +21,13 @@ res_fft = performing_fft(signal)
 
 # print("res_fft:\n", res_fft)
 
-def system_DBSF(vec_yn, vec_xn):
+def system_DBSF(vec_yn, vec_xn,Ts):
     # vec_yn = [y[n], y[n-1], y[n-2]]
     # vec_xn = [x[n], x[n-1], x[n-2]]
     w1 = 10 * 2*np.pi 
-    w2 = 40 * 2*np.pi 
-    w3 = 80 * 2*np.pi 
-    w4 = 160 * 2*np.pi 
-    Ts = 1e-3
+    w2 = 20 * 2*np.pi 
+    w3 = 640 * 2*np.pi 
+    w4 = 1280 * 2*np.pi 
     exp_w1ts = np.exp(-w1*Ts)
     exp_w2ts = np.exp(-w2*Ts)
     exp_w3ts = np.exp(-w3*Ts)
@@ -70,8 +69,8 @@ def controller_OPENLOOP(ref):
 yout = list()
 err = list()
 cinp = list()
-Ts = 1e-3
-tm = np.arange(0, 0.256, step=Ts)
+Ts = 1e-4
+tm = np.arange(0, 0.4096, step=Ts)
 
 for t in tm:
     if len(yout) < 3:
@@ -80,7 +79,7 @@ for t in tm:
         cinp.append(0)
         continue
     else:
-        yout_ = system_DBSF(yout[-3:], cinp[-3:])
+        yout_ = system_DBSF(yout[-3:], cinp[-3:],Ts)
         ref_ = 1 if len(yout) == 3 else 0 
         err_ = ref_ - yout_
         cinp_ = controller_OPENLOOP(ref_)
